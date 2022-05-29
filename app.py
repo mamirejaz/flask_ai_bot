@@ -17,7 +17,12 @@ model_name = "microsoft/DialoGPT-large"
 # model_name = "microsoft/DialoGPT-medium"
 # model_name = "microsoft/DialoGPT-small"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name)
+#model = AutoModelForCausalLM.from_pretrained(model_name)
+
+model = pickle.load(open("finalized_model.sav", 'rb'))
+
+# filename = 'finalized_model.sav'
+# joblib.dump(model, filename)
 
 app = Flask(__name__)
 api = Api(app)
